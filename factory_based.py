@@ -1,5 +1,4 @@
 from dataclasses import dataclass, asdict
-from get_from import GetFrom
 
 
 @dataclass(frozen=True, kw_only=True)
