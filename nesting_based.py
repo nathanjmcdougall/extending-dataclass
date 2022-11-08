@@ -9,16 +9,16 @@ class MyClass:
     c: int
 
 
-def _from_myclass(attr):
-    return field(default=GetFrom("my_class", attr), repr=True, init=False)
+def _from_myclass(attr, **kwargs):
+    return field(default=GetFrom("my_class", attr), **kwargs)
 
 
 @dataclass(frozen=True, kw_only=True)
 class MyExtendedClass:
     my_class: MyClass = field(repr=False)
-    a: int = _from_myclass("a")
-    b: int = _from_myclass("b")
-    c: int = _from_myclass("c")
+    a: int = _from_myclass("a", repr=True, init=False)
+    b: int = _from_myclass("b", repr=True, init=False)
+    c: int = _from_myclass("c", repr=True, init=False)
     d: int = field()
     e: int = field()
 
